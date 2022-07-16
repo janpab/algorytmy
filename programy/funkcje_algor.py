@@ -282,6 +282,7 @@ print([[len(list(v)), k] for k, v in groupby(s)])
 
 
 '''
+Z17.
 Mamy daną listę liczb całkowitych. Wyszukaj najdłuższy podciąg liczb parzystych występujących kolejno po sobie.
 x= [1,2,3,4,6,2,4,5,7,8,0,3,4,2]
 
