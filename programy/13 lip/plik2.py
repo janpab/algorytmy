@@ -10,6 +10,7 @@ W zapisie programu nie możesz korzystać z funkcji języka konwertujących napi
 0
 1100
 '''
+from curses.ascii import isdigit
 from os import sep
 
 
@@ -76,15 +77,22 @@ Znaki reprezentujące cyfry większe od 10 odwzorowywane są za pomocą małych 
 W zapisie programu nie możesz korzystać z funkcji języka konwertujących napisy na liczby.
 '''
 #
-#  for k in range(0,33):
-#       if chr(97 + k) == num[i]:
-#            liczba_z_litery = 10+k
+
 def to_int(a, p):# 2-9
     potega=0
     suma = 0 
-    for c in reversed(a):#
-        suma += int(c) * p**potega
-        potega+=1
+    for c in reversed(a):
+        if c.isdigit():
+            suma += int(c) * p**potega
+            potega+=1
+        else:
+            for k in range(0,33):
+                if chr(97 + k) == c:
+                    liczba_z_litery = 10+k
+
+            suma += int(liczba_z_litery) * p**potega
+            potega+=1
+
     return suma
 
 print(to_int("66",8))
