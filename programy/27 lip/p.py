@@ -105,7 +105,7 @@ print(czy_podziel_trzy(99))
 '''
 Matura maj 2015, zadanie 4. Liczby binarne
 '''
-with open('liczby.txt') as f:
+with open(r"C:\Users\Jan\Desktop\J\KOREPETYCJE\algorytmy\programy\27 lip\liczby.txt") as f:
     linie = f.readlines()
 
 linie = [el.strip() for el in linie]
@@ -139,11 +139,47 @@ zad_42()
 
 
 #ZAD DOM
+def to_int(bin):
+    potega=0
+    suma = 0 
+    for c in reversed(bin):
+        suma += int(c) * 2**potega
+        potega+=1
+    return suma
+
 def zad_43():
-    pass
+    najmniejsza = [to_int(linie[0]),0]
+    najwieksza = [to_int(linie[0]),0]
+    for i in range(len(linie)-1):
+        liczba = to_int(linie[i])
+        if liczba > najwieksza[0]:
+            najwieksza[0]= liczba
+            najwieksza[1]= i+1
+        if liczba < najmniejsza[0]:
+            najmniejsza[0] = liczba
+            najmniejsza[1]= i+1
+    print("najwieksza: ", najwieksza[1])
+    print("najmnijesza: ", najmniejsza[1])
+
+
+zad_43()
 '''
 Matura czerwiec 2019, zadanie 4. Wybrane liczby
 '''
+def czy_pierwsza(a):
+    if a == 1:
+        return False
+    if a == 2:
+        return True
+    if a % 2 == 0:
+        return False
+    for i in range(3, int(a/2)+1, 2):
+        if a % i == 0:
+            return False
+    return True
+
+
+def zad_41():
 
 '''
 Matura czerwiec 2016, zadanie 6. Systemy liczbowe
