@@ -6,10 +6,12 @@ np.: 6=3+2+1, 28=14+7+4+2+1
 '''
 from math import sqrt
 #i <= sqrt(n)
-#print(sqrt(28))
+#print(int(sqrt(28)+1))
 #1   28/1=28
 #2   28/2=14
 #4   28/4=7
+
+
 
 # 16
 # 4     16/4=4
@@ -21,11 +23,11 @@ def dzielniki(n):
     for i in range(1, int(sqrt(n))+1):
         if n%i ==0:
             suma+=i
-            if n/i != i and n/i != n:
-                suma += n/i
+            if n/i != i and n/i != n: #nie jest tą samą liczbą i nie jest powtarzającą się liczbą to 
+                suma += n/i   # dodajemy tę liczbędo sumy
     return suma == n        
-#print(dzielniki(28))
-#print(dzielniki(6))
+print(dzielniki(28))
+#print(dzielniki(7))
 
 
 '''
