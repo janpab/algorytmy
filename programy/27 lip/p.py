@@ -25,7 +25,6 @@ x = 2*x + E
 
 '''
 
-from audioop import reverse
 
 
 def to_int(a):

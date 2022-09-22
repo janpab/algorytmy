@@ -10,7 +10,6 @@ W zapisie programu nie możesz korzystać z funkcji języka konwertujących napi
 0
 1100
 '''
-from curses.ascii import isdigit
 from os import sep
 
 
@@ -47,7 +46,7 @@ def to_base(a, p):
     base.reverse()
     return "".join(base)
 
-print(to_base(1, 2),"bin")
+print(to_base(12, 2),"bin")
 
 
 '''
