@@ -109,6 +109,7 @@ def sort_bin(tab):
             if tab[idx]>num:
                 idx_r = idx-1
             if idx_r < idx_l:
+                idx = idx_l
                 break
         for j in range(i,idx-1,-1):#1 w prawo
             tab[j+1] = tab[j]
@@ -165,3 +166,90 @@ print(wysz_bin(tab))
 
 # matura maj 2017 zad. 1.2
 # matura czerwiec 2016 zad. 2 dziwny porządek 
+
+
+
+
+
+
+#ZAD 1.2 Prostokąt maj 2017
+
+#sortuje tablicę
+def sort_bab2(tab):
+    for i in range(len(tab)):#wszystkie przebiegi
+        for k in range(len(tab)-1-i):#1 przebieg    
+            if tab[k] > tab[k+1]:
+                tmp = tab[k+1]
+                tab[k+1] = tab[k]
+                tab[k] = tmp
+                
+    return(tab)
+#znajduje 2 najwieksze nie podzielne przez p 
+#złożoność binarna
+def prz_bin_do_zad(tab,p):
+    idx_l = 0
+    idx_r =len(tab)-1
+    maxi1 = 0
+    maxi2 = 0
+    while True:
+        idx = (idx_l+idx_r)//2
+        # if tab[idx]==a:
+        #     return idx
+        if tab[idx]%p!= 0:# jeżeli ta liczba jest nie podzielna to szukamy jeszcze wiekszej nie podzelnej po prawej
+            if maxi1<tab[idx]:
+                maxi1 = tab[idx]
+            elif maxi2< tab[idx]:
+                maxi2 = tab[idx]
+            idx_l = idx+1
+ 
+        if tab[idx]%p == 0: # jeżeli tafiamy na liczbe podzielną przez p to najwieksza podzielna moze byc i po prawej i po lewej
+            pass
+        if idx_r < idx_l:
+            return maxi1, maxi2
+        if idx_l > idx_r:
+            return maxi1,maxi2
+#złożoność liniowa
+def szuk_prostok(tab, p):
+    max1 = 0
+    max2 = 0
+    for i in range(len(tab)-1):
+        if tab[i]>max1 and tab[i]%p != 0:
+            max2 = max1
+            max1 = tab[i]
+        elif tab[i]>max2 and tab[i]%p != 0:
+            max2 = tab[i]
+        
+    print("prostokąt: ", max1,max2)
+
+
+p = 7
+ab = [6, 28, 7, 12, 10, 14, 5, 9, 4, 8, 18]
+#prz_bin(ab, )
+s_ab = sort_bab2(ab)
+#print(s_ab)
+#[4, 5, 6, 7, 8, 9, 10, 12, 14, 18, 28]
+#print(prz_bin_do_zad(ab,7))
+
+
+szuk_prostok(ab, p)
+
+
+
+#zad 3 matura czerwiec 2016
+#znajduje najmniejszą nieparzystą lub najwiekszą parzystą
+min_np = 0
+max_parz= 0 
+t = [ 3, 6, 8, 11, 15, 20, 35, 70, 100, 1000]
+for i in range(len(t)-1):
+    liczba = tab[i]
+    if liczba % 2 == 0:
+        if liczba > max_parz:
+            max_parz = liczba
+    else:
+        if liczba < min_np:
+            min_np = liczba
+
+if min_np != 0:
+    print(min_np)
+else:
+    print(max_parz)
