@@ -161,7 +161,7 @@ def wysz_bin(tab):
             idx_l = idx_m+1
         if idx_l==idx_r:
             return tab[idx_l]
-print(wysz_bin(tab))
+print(wysz_bin(tab),"wysz bin j i m")
 
 
 # matura maj 2017 zad. 1.2
