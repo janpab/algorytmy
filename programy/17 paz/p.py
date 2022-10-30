@@ -10,13 +10,17 @@ def szyfruje(a,k):
     for ch in a:
         if ord(ch) + k >= ord('z'):
             b = ord(ch)+k-(ord('z')-ord('a')+1)
+            print(ord(ch),k,ord('z'),ord('a')+1)
         else:
             b = ord(ch)+k
             
         a_ch.append(chr(b))
     return "".join(a_ch)
-    
-print(szyfruje("program",2))
+#z 122 2 122 98
+#z ord('z') k 122-97+
+# 122 +2 - 35
+#124 -35
+print(szyfruje("zrogram",2), "TO")
             
 def deszyfruje(a,k):
     a_ch =[]

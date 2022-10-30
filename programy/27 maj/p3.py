@@ -8,8 +8,8 @@ t_s = s.split()
 print(t_s)
 t_len = [[len(el),el] for el in t_s ]
 print(t_len)
-print(max(t_len))
-a = max(t_len)
+print(min(t_len))
+a = min(t_len)
 print(a[0], a[1])
 
 
