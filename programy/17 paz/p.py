@@ -187,3 +187,109 @@ def kolumnowy(wyraz, kol):
     print(a)
     
 kolumnowy('ttafa1edsrn2kozoiszywa', 4)
+# teks
+# tdoz
+# aszy
+# frow
+# ania
+def szyfruj_kol(tekst, num_k):
+    num_w = len(tekst) // num_k + 1
+    szyfr = []
+    for ik in range(num_k):
+        for iw in range(num_w):
+            idx = iw*num_k + ik
+            if idx < len(tekst):
+                szyfr.append(tekst[idx])
+    return ''.join(szyfr)
+
+print(szyfruj_kol('tekstdozaszyfrowania12', 4))
+
+
+
+def deszyfruj_kol(szyfr, num_k):
+    num_w = len(szyfr) // num_k + 1
+    tekst = [' '] * len(szyfr)
+    szyfr_i = 0
+    for ik in range(num_k):
+        for iw in range(num_w):
+            idx = iw*num_k + ik
+            if idx < len(tekst):
+                tekst[idx] = szyfr[szyfr_i]
+                szyfr_i += 1
+    return ''.join(tekst)
+print(deszyfruj_kol('ttafa1edsrn2kozoiszywa', 4))
+
+
+# wydawanie reszty metodą zachłanną
+nominaly = [10, 5, 2, 1]
+
+'''
+79 zł
+79 // 10  = 7 monet po 10 zł
+
+79 - 7*10 = 9 zł
+79 // 5 = 1 moneta po 5 zł
+
+9 - 1*5 = 4 zł
+79 // 2 = 2 monety po 2 zł
+
+4 - 2*2 = 0zł
+
+'''
+def reszta(kwota):
+    nominaly = [10, 5, 2, 1]
+    #while kwota != 0:
+    for els in nominaly:            
+        ilosc_monet = kwota//els
+        if ilosc_monet > 0:
+            print(f'Wydajemy {ilosc_monet} po {els}')
+        moneta = els            
+        kwota = kwota - (ilosc_monet * moneta)
+reszta(79)
+
+# wyszukiwanie wzorca w tekscie
+wzorzec = '123'
+tekst = 'bjjb123kbjkvb123klbjklb123'
+for idx in range(len(tekst)):
+    if tekst[idx:].startswith(wzorzec):
+        print(idx)
+
+
+'''
+i = 0
+bjjb123kbjkvb123klbjklb123
+    b != 1 break
+
+i = 1 
+jjb123kbjkvb123klbjklb123
+    j != 1 break
+
+i = 4
+123kbjkvb123klbjklb123
+    1 == 1 ok
+    2 == 2 ok
+    3 == 3 ok
+
+'''
+
+
+def wzorzec1(wzorzec, tekst):
+    jest_wzorzec = False
+    for i in range(len(tekst)):        
+        a = True
+        
+        for k in range(len(wzorzec)): 
+            if wzorzec[k] != tekst[i+k]:
+                a = False
+                break # wzorzec nie pasuje
+        if a: # wzorzec znaleziony
+            print(i)
+            jest_wzorzec = True
+    if not jest_wzorzec:
+        print("nie ma wzorca")
+
+
+wzorzec1(wzorzec,"999")
+
+
+                
